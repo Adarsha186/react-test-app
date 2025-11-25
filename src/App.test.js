@@ -50,23 +50,23 @@ test("TC-02a: shows name validation error", async () => {
 });
 
 // 2b. Invalid name characters
-// test("TC-02b: shows name validation error for invalid characters", async () => {
-//   render(<App />);
-//   fireEvent.change(screen.getByPlaceholderText("Name"), {
-//     target: { value: "John123" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Email"), {
-//     target: { value: "john@gmail.com" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Password"), {
-//     target: { value: "123456" },
-//   });
-//   fireEvent.click(screen.getByText("Register"));
-//   expect(screen.getByText("Name must contain only alphabets and spaces")).toBeInTheDocument();
-//   await waitFor(() => {
-//     expect(hitFailureAPI).toHaveBeenCalledTimes(1);
-//   });
-// });
+test("TC-02b: shows name validation error for invalid characters", async () => {
+  render(<App />);
+  fireEvent.change(screen.getByPlaceholderText("Name"), {
+    target: { value: "John123" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("Email"), {
+    target: { value: "john@gmail.com" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("Password"), {
+    target: { value: "123456" },
+  });
+  fireEvent.click(screen.getByText("Register"));
+  expect(screen.getByText("Name must contain only alphabets and spaces")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(hitFailureAPI).toHaveBeenCalledTimes(1);
+  });
+});
 
 // 3. Invalid Email
 test("TC-03: invalid email triggers error and calls failure API", async () => {
@@ -92,27 +92,27 @@ test("TC-03: invalid email triggers error and calls failure API", async () => {
 });
 
 // 4. Weak Password
-// test("TC-04: shows password length error", async () => {
-//   render(<App />);
+test("TC-04: shows password length error", async () => {
+  render(<App />);
 
-//   fireEvent.change(screen.getByPlaceholderText("Name"), {
-//     target: { value: "John" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Email"), {
-//     target: { value: "john@gmail.com" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Password"), {
-//     target: { value: "123" },
-//   });
+  fireEvent.change(screen.getByPlaceholderText("Name"), {
+    target: { value: "John" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("Email"), {
+    target: { value: "john@gmail.com" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("Password"), {
+    target: { value: "123" },
+  });
 
-//   fireEvent.click(screen.getByText("Register"));
+  fireEvent.click(screen.getByText("Register"));
 
-//   expect(screen.getByText("Password must be at least 6 characters")).toBeInTheDocument();
+  expect(screen.getByText("Password must be at least 6 characters")).toBeInTheDocument();
 
-//   await waitFor(() => {
-//     expect(hitFailureAPI).toHaveBeenCalledTimes(1);
-//   });
-// });
+  await waitFor(() => {
+    expect(hitFailureAPI).toHaveBeenCalledTimes(1);
+  });
+});
 
 // 5. Success Scenario
 test("TC-05: shows success message when API returns response", async () => {
