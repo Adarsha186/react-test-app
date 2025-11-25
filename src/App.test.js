@@ -27,33 +27,11 @@ test("TC-01: shows error when required fields are missing", async () => {
 });
 
 // 2. Invalid name
-// test("TC-02a: shows name validation error", async () => {
-//   render(<App />);
-
-//   fireEvent.change(screen.getByPlaceholderText("Name"), {
-//     target: { value: "Jo" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Email"), {
-//     target: { value: "john@gmail.com" },
-//   });
-//   fireEvent.change(screen.getByPlaceholderText("Password"), {
-//     target: { value: "123456" },
-//   });
-
-//   fireEvent.click(screen.getByText("Register"));
-
-//   expect(screen.getByText("Name must be at least 3 characters")).toBeInTheDocument();
-
-//   await waitFor(() => {
-//     expect(hitFailureAPI).toHaveBeenCalledTimes(1);
-//   });
-// });
-
-// 2b. Invalid name characters
-test("TC-02b: shows name validation error for invalid characters", async () => {
+test("TC-02a: shows name validation error", async () => {
   render(<App />);
+
   fireEvent.change(screen.getByPlaceholderText("Name"), {
-    target: { value: "John123" },
+    target: { value: "Jo" },
   });
   fireEvent.change(screen.getByPlaceholderText("Email"), {
     target: { value: "john@gmail.com" },
@@ -61,12 +39,34 @@ test("TC-02b: shows name validation error for invalid characters", async () => {
   fireEvent.change(screen.getByPlaceholderText("Password"), {
     target: { value: "123456" },
   });
+
   fireEvent.click(screen.getByText("Register"));
-  expect(screen.getByText("Name must contain only alphabets and spaces")).toBeInTheDocument();
+
+  expect(screen.getByText("Name must be at least 3 characters")).toBeInTheDocument();
+
   await waitFor(() => {
     expect(hitFailureAPI).toHaveBeenCalledTimes(1);
   });
 });
+
+// 2b. Invalid name characters
+// test("TC-02b: shows name validation error for invalid characters", async () => {
+//   render(<App />);
+//   fireEvent.change(screen.getByPlaceholderText("Name"), {
+//     target: { value: "John123" },
+//   });
+//   fireEvent.change(screen.getByPlaceholderText("Email"), {
+//     target: { value: "john@gmail.com" },
+//   });
+//   fireEvent.change(screen.getByPlaceholderText("Password"), {
+//     target: { value: "123456" },
+//   });
+//   fireEvent.click(screen.getByText("Register"));
+//   expect(screen.getByText("Name must contain only alphabets and spaces")).toBeInTheDocument();
+//   await waitFor(() => {
+//     expect(hitFailureAPI).toHaveBeenCalledTimes(1);
+//   });
+// });
 
 // 3. Invalid Email
 test("TC-03: invalid email triggers error and calls failure API", async () => {
