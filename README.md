@@ -26,7 +26,7 @@ The project uses *Jest* and *React Testing Library* to test:
 - Successful API response  
 - Loading state  
 
-The test cases follow a structured format (TC-01, TC-02, etc.) and are also documented in JIRA.
+The test cases follow a structured format (TC-01, TC-02, etc.) and are also documented in [JIRA](https://yemparalaadarsha.atlassian.net/browse/TDTLM-1).
 
 ### CI/CD Pipeline
 A GitHub Actions workflow is included to:
